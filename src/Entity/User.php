@@ -73,13 +73,13 @@ class User implements UserInterface
     private $power_fire;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Fight", mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Game", mappedBy="user", orphanRemoval=true)
      */
-    private $fights;
+    private $Games;
 
     public function __construct()
     {
-        $this->fights = new ArrayCollection();
+        $this->Games = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -240,30 +240,30 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Fight[]
+     * @return Collection|Game[]
      */
-    public function getFights(): Collection
+    public function getGames(): Collection
     {
-        return $this->fights;
+        return $this->Games;
     }
 
-    public function addFight(Fight $fight): self
+    public function addGame(Game $Game): self
     {
-        if (!$this->fights->contains($fight)) {
-            $this->fights[] = $fight;
-            $fight->setUser($this);
+        if (!$this->Games->contains($Game)) {
+            $this->Games[] = $Game;
+            $Game->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeFight(Fight $fight): self
+    public function removeGame(Game $Game): self
     {
-        if ($this->fights->contains($fight)) {
-            $this->fights->removeElement($fight);
+        if ($this->Games->contains($Game)) {
+            $this->Games->removeElement($Game);
             // set the owning side to null (unless already changed)
-            if ($fight->getUser() === $this) {
-                $fight->setUser(null);
+            if ($Game->getUser() === $this) {
+                $Game->setUser(null);
             }
         }
 

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Boss;
 use App\Form\BossType;
+use App\Form\BossNewType;
 use App\Repository\BossRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +32,7 @@ class BossController extends AbstractController
     public function new(Request $request): Response
     {
         $boss = new Boss();
-        $form = $this->createForm(BossType::class, $boss);
+        $form = $this->createForm(BossNewType::class, $boss);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

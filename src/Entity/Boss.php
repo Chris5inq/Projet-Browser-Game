@@ -59,13 +59,13 @@ class Boss
     private $power_fire;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Fight", mappedBy="boss")
+     * @ORM\OneToMany(targetEntity="App\Entity\Game", mappedBy="boss")
      */
-    private $fights;
+    private $games;
 
     public function __construct()
     {
-        $this->fights = new ArrayCollection();
+        $this->games = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -170,24 +170,24 @@ class Boss
     }
 
     /**
-     * @return Collection|Fight[]
+     * @return Collection|Game[]
      */
-    public function getFights(): Collection
+    public function getGames(): Collection
     {
-        return $this->fights;
+        return $this->games;
     }
 
-    public function addFight(Fight $fight): self
+    public function addGame(Game $game): self
     {
-        if (!$this->fights->contains($fight)) {
-            $this->fights[] = $fight;
-            $fight->setBoss($this);
+        if (!$this->games->contains($game)) {
+            $this->games[] = $game;
+            $game->setBoss($this);
         }
 
         return $this;
     }
 
-    public function removeFight(Fight $fight): self
+    public function removeGame(Game $game): self
     {
         if ($this->fights->contains($fight)) {
             $this->fights->removeElement($fight);

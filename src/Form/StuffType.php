@@ -3,9 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Stuff;
+use App\Entity\Slot;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class StuffType extends AbstractType
 {
@@ -20,7 +22,10 @@ class StuffType extends AbstractType
             ->add('m_power')
             ->add('m_power_ice')
             ->add('m_power_fire')
-            ->add('fights')
+            ->add('slot', EntityType::class,[
+                'class' => Slot::class,
+                'choice_label' => 'name',
+            ])
         ;
     }
 

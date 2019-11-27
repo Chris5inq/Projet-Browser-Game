@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\FightRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\GameRepository")
  */
-class Fight
+class Game
 {
     /**
      * @ORM\Id()
@@ -29,18 +29,18 @@ class Fight
     private $turns;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="fights")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="Games")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Boss", inversedBy="fights")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Boss", inversedBy="Games")
      */
     private $boss;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Stuff", inversedBy="fights")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Stuff", inversedBy="Games")
      */
     private $stuffs;
 

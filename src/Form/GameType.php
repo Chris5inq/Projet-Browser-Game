@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Fight;
+use App\Entity\Game;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -23,7 +23,7 @@ class GameType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Fight::class,
+            'data_class' => Game::class,
         ]);
     }
 }

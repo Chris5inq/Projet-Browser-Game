@@ -59,13 +59,19 @@ class Stuff
     private $m_power_fire;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Fight", mappedBy="stuffs")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Game", mappedBy="stuffs")
      */
-    private $fights;
+    private $Games;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Slot", inversedBy="stuffs")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $slot;
 
     public function __construct()
     {
-        $this->fights = new ArrayCollection();
+        $this->Games = new ArrayCollection();
     }
 
 
@@ -171,29 +177,41 @@ class Stuff
     }
 
     /**
-     * @return Collection|Fight[]
+     * @return Collection|Game[]
      */
-    public function getFights(): Collection
+    public function getGames(): Collection
     {
-        return $this->fights;
+        return $this->Games;
     }
 
-    public function addFight(Fight $fight): self
+    public function addGame(Game $Game): self
     {
-        if (!$this->fights->contains($fight)) {
-            $this->fights[] = $fight;
-            $fight->addStuff($this);
+        if (!$this->Games->contains($Game)) {
+            $this->Games[] = $Game;
+            $Game->addStuff($this);
         }
 
         return $this;
     }
 
-    public function removeFight(Fight $fight): self
+    public function removeGame(Game $Game): self
     {
-        if ($this->fights->contains($fight)) {
-            $this->fights->removeElement($fight);
-            $fight->removeStuff($this);
+        if ($this->Games->contains($Game)) {
+            $this->Games->removeElement($Game);
+            $Game->removeStuff($this);
         }
+
+        return $this;
+    }
+
+    public function getSlot(): ?Slot
+    {
+        return $this->slot;
+    }
+
+    public function setSlot(?Slot $slot): self
+    {
+        $this->slot = $slot;
 
         return $this;
     }

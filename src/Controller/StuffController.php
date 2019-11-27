@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Stuff;
+use App\Entity\Slot;
 use App\Form\StuffType;
+use App\Form\StuffNewType;
 use App\Repository\StuffRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +33,7 @@ class StuffController extends AbstractController
     public function new(Request $request): Response
     {
         $stuff = new Stuff();
-        $form = $this->createForm(StuffType::class, $stuff);
+        $form = $this->createForm(StuffNewType::class, $stuff);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
