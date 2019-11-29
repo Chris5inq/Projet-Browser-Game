@@ -27,7 +27,7 @@ class User implements UserInterface
     private $username;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="array")
      */
     private $roles = [];
 
@@ -80,6 +80,14 @@ class User implements UserInterface
     public function __construct()
     {
         $this->Games = new ArrayCollection();
+        $this->roles[] = "ROLE_USER";
+        $this->health = 500;
+        $this->armour = 20;
+        $this->resist_fire = 20;
+        $this->resist_ice = 20;
+        $this->power = 50;
+        $this->power_fire = 50;
+        $this->power_ice = 50;
     }
 
     public function getId(): ?int

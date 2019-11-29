@@ -189,11 +189,11 @@ class Boss
 
     public function removeGame(Game $game): self
     {
-        if ($this->fights->contains($fight)) {
-            $this->fights->removeElement($fight);
+        if ($this->games->contains($game)) {
+            $this->games->removeElement($game);
             // set the owning side to null (unless already changed)
-            if ($fight->getBoss() === $this) {
-                $fight->setBoss(null);
+            if ($game->getBoss() === $this) {
+                $game->setBoss(null);
             }
         }
 

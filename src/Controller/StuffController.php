@@ -65,6 +65,8 @@ class StuffController extends AbstractController
      */
     public function edit(Request $request, Stuff $stuff): Response
     {
+        dd($stuff);
+        
         $form = $this->createForm(StuffType::class, $stuff);
         $form->handleRequest($request);
 

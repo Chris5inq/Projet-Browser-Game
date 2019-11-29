@@ -22,6 +22,20 @@ class BossRepository extends ServiceEntityRepository
     // /**
     //  * @return Boss[] Returns an array of Boss objects
     //  */
+    
+    public function selectRandomBoss() {
+        $rsm = new \Doctrine\ORM\Query\ResultSetMappingBuilder($this->getEntityManager());
+        $rsm->addRootEntityFromClassMetadata(\App\Entity\Boss::class, 'Boss');
+        $sql = "SELECT * FROM Boss ORDER BY RAND() LIMIT 1";
+        return $this->getEntityManager()->createNativeQuery($sql, $rsm)->getOneOrNullResult();
+    }
+
+    
+    
+
+    // /**
+    //  * @return Boss[] Returns an array of Boss objects
+    //  */
     /*
     public function findByExampleField($value)
     {

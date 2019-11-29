@@ -19,7 +19,7 @@ class Game
     private $id;
 
     /**
-     * @ORM\Column(type="smallint")
+     * @ORM\Column(type="smallint", nullable=true)
      */
     private $result;
 
@@ -38,11 +38,6 @@ class Game
      * @ORM\ManyToOne(targetEntity="App\Entity\Boss", inversedBy="Games")
      */
     private $boss;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Stuff", inversedBy="Games")
-     */
-    private $stuffs;
 
     public function __construct()
     {
@@ -98,32 +93,6 @@ class Game
     public function setBoss(?Boss $boss): self
     {
         $this->boss = $boss;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Stuff[]
-     */
-    public function getStuffs(): Collection
-    {
-        return $this->stuffs;
-    }
-
-    public function addStuff(Stuff $stuff): self
-    {
-        if (!$this->stuffs->contains($stuff)) {
-            $this->stuffs[] = $stuff;
-        }
-
-        return $this;
-    }
-
-    public function removeStuff(Stuff $stuff): self
-    {
-        if ($this->stuffs->contains($stuff)) {
-            $this->stuffs->removeElement($stuff);
-        }
 
         return $this;
     }

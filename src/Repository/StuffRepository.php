@@ -19,6 +19,19 @@ class StuffRepository extends ServiceEntityRepository
         parent::__construct($registry, Stuff::class);
     }
 
+    public function selectRandomStuffBySlot($slot, $_exclude) {
+        
+        $rsm = new \Doctrine\ORM\Query\ResultSetMappingBuilder($this->getEntityManager());
+        $rsm->addRootEntityFromClassMetadata(\App\Entity\Stuff::class, 'Stuff');
+        $sql = "SELECT * FROM Stuff  
+        WHERE slot_id = ".$slot->getId(); 
+        if(!empty($_exclude)){
+            $sql .=" AND id NOT IN (".implode(', ', $_exclude).")";
+        }
+        $sql .= " ORDER BY RAND() LIMIT 1";
+        return $this->getEntityManager()->createNativeQuery($sql, $rsm)->getOneOrNullResult();
+    }
+
     // /**
     //  * @return Stuff[] Returns an array of Stuff objects
     //  */

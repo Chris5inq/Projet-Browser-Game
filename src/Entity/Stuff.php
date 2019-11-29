@@ -59,11 +59,6 @@ class Stuff
     private $m_power_fire;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Game", mappedBy="stuffs")
-     */
-    private $Games;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Slot", inversedBy="stuffs")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -71,7 +66,7 @@ class Stuff
 
     public function __construct()
     {
-        $this->Games = new ArrayCollection();
+        $this->games = new ArrayCollection();
     }
 
 
@@ -172,34 +167,6 @@ class Stuff
     public function setMPowerFire(int $m_power_fire): self
     {
         $this->m_power_fire = $m_power_fire;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Game[]
-     */
-    public function getGames(): Collection
-    {
-        return $this->Games;
-    }
-
-    public function addGame(Game $Game): self
-    {
-        if (!$this->Games->contains($Game)) {
-            $this->Games[] = $Game;
-            $Game->addStuff($this);
-        }
-
-        return $this;
-    }
-
-    public function removeGame(Game $Game): self
-    {
-        if ($this->Games->contains($Game)) {
-            $this->Games->removeElement($Game);
-            $Game->removeStuff($this);
-        }
 
         return $this;
     }

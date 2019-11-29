@@ -36,9 +36,9 @@ class BossController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($boss);
-            $entityManager->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($boss);
+            $em->flush();
 
             return $this->redirectToRoute('boss_index');
         }
