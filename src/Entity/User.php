@@ -81,7 +81,7 @@ class User implements UserInterface
     {
         $this->Games = new ArrayCollection();
         $this->roles[] = "ROLE_USER";
-        $this->health = 500;
+        $this->health = 1000;
         $this->armour = 20;
         $this->resist_fire = 20;
         $this->resist_ice = 20;

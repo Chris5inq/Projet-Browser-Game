@@ -39,10 +39,11 @@ class StuffChosenType extends AbstractType
             $builder->add("$slot_name", EntityType::class, [
                 'class' => Stuff::class,
                 'label' => $slot_name,
-                'choice_label' => 'name',
+                'choice_label' => function ($stuff) {
+                    return $stuff->getName();
+                },
                 'choices' => $_stuff,
                 'expanded' => true
-
             ]);
         }
     }

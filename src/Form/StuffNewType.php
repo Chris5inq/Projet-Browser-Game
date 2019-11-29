@@ -23,25 +23,25 @@ class StuffNewType extends AbstractType
             "data" => $faker->lastName()     
         ])
         ->add('m_health', IntegerType::class,[
-            "data" => 500
+            "data" => 1000
         ])
         ->add('m_armour', IntegerType::class,[
-            "data" => rand(-10, 10)
+            "data" => rand(-5, 5)
         ])
         ->add('m_resist_fire', IntegerType::class,[
-            "data" => rand(-10, 10)
+            "data" => rand(-5, 5)
         ])
         ->add('m_resist_ice', IntegerType::class,[
-            "data" => rand(-10, 10)
+            "data" => rand(-5, 5)
         ])
         ->add('m_power', IntegerType::class,[
-            "data" => rand(-20, 20)
+            "data" => rand(-5, 5)
         ])
         ->add('m_power_ice', IntegerType::class,[
-            "data" => rand(-20, 20)
+            "data" => rand(-5, 5)
         ])
         ->add('m_power_fire', IntegerType::class,[
-            "data" => rand(-20, 20)
+            "data" => rand(-5, 5)
         ])
             ->add('slot', EntityType::class,[
                 'class' => Slot::class,

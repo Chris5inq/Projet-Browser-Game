@@ -21,25 +21,25 @@ class BossNewType extends AbstractType
                 "data" => $faker->lastName()     
             ])
             ->add('health', IntegerType::class,[
-                "data" => 500
+                "data" => 1000
             ])
             ->add('armour', IntegerType::class,[
-                "data" => rand(0, 20)
+                "data" => rand(5, 35)
             ])
             ->add('resist_fire', IntegerType::class,[
-                "data" => rand(0, 20)
+                "data" => rand(5, 35)
             ])
             ->add('resist_ice', IntegerType::class,[
-                "data" => rand(0, 20)
+                "data" => rand(5, 35)
             ])
             ->add('power', IntegerType::class,[
-                "data" => rand(0, 50)
+                "data" => rand(35, 65)
             ])
             ->add('power_ice', IntegerType::class,[
-                "data" => rand(0, 50)
+                "data" => rand(35, 65)
             ])
             ->add('power_fire', IntegerType::class,[
-                "data" => rand(0, 50)
+                "data" => rand(35, 65)
             ])
         ;
     }

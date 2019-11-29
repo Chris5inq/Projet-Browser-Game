@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GameController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div>Vous avez {% if game.result == 1 %}gagné{% else %} perdu {% endif %} en {{game.turns}} tours !</div>
+
+<div class="example-wrapper">
+{% for key, turn in turns %}
+    <div><p>Tour {{ key }}:</p>
+    {% for perso, action in turn %}
+    <p>{{ perso }} attaque en utilisant {{action.type}} et inflige {{action.damages}} points de dégâts.</p>   
+    {% endfor  %}  
+    </div><br> 
+{% endfor  %}   
+</div>
+
+{% endblock %}
