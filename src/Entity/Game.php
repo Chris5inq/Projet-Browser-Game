@@ -29,13 +29,13 @@ class Game
     private $turns;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="Games")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="games")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Boss", inversedBy="Games")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Boss", inversedBy="games")
      */
     private $boss;
 

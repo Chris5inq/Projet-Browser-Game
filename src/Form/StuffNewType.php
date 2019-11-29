@@ -26,22 +26,22 @@ class StuffNewType extends AbstractType
             "data" => 500
         ])
         ->add('m_armour', IntegerType::class,[
-            "data" => rand(-30, 30)
+            "data" => rand(-10, 10)
         ])
         ->add('m_resist_fire', IntegerType::class,[
-            "data" => rand(-30, 30)
+            "data" => rand(-10, 10)
         ])
         ->add('m_resist_ice', IntegerType::class,[
-            "data" => rand(-30, 30)
+            "data" => rand(-10, 10)
         ])
         ->add('m_power', IntegerType::class,[
-            "data" => rand(-30, 30)
+            "data" => rand(-20, 20)
         ])
         ->add('m_power_ice', IntegerType::class,[
-            "data" => rand(-30, 30)
+            "data" => rand(-20, 20)
         ])
         ->add('m_power_fire', IntegerType::class,[
-            "data" => rand(-30, 30)
+            "data" => rand(-20, 20)
         ])
             ->add('slot', EntityType::class,[
                 'class' => Slot::class,

@@ -75,7 +75,7 @@ class User implements UserInterface
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Game", mappedBy="user", orphanRemoval=true)
      */
-    private $Games;
+    private $games;
 
     public function __construct()
     {
@@ -252,26 +252,26 @@ class User implements UserInterface
      */
     public function getGames(): Collection
     {
-        return $this->Games;
+        return $this->games;
     }
 
-    public function addGame(Game $Game): self
+    public function addGame(Game $game): self
     {
-        if (!$this->Games->contains($Game)) {
-            $this->Games[] = $Game;
-            $Game->setUser($this);
+        if (!$this->games->contains($game)) {
+            $this->games[] = $game;
+            $game->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeGame(Game $Game): self
+    public function removeGame(Game $game): self
     {
-        if ($this->Games->contains($Game)) {
-            $this->Games->removeElement($Game);
+        if ($this->Games->contains($game)) {
+            $this->Games->removeElement($game);
             // set the owning side to null (unless already changed)
-            if ($Game->getUser() === $this) {
-                $Game->setUser(null);
+            if ($game->getUser() === $this) {
+                $game->setUser(null);
             }
         }
 

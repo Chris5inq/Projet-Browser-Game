@@ -10,6 +10,7 @@ use App\Repository\GameRepository;
 use App\Repository\SlotRepository;
 use App\Repository\StuffRepository;
 use Symfony\Component\HttpFoundation\Session\Session;
+use App\Form\StuffChosenType;
 
 class GameController extends AbstractController
 {
@@ -18,8 +19,8 @@ class GameController extends AbstractController
      */
     public function create(BossRepository $bossRepository, SlotRepository $slotRepository, StuffRepository $stuffRepository)
     {       
-        $session = new Session(); 
-        $session->start(); 
+        $session = new Session();
+        $em = $this->getDoctrine()->getManager();  
         
         $game = new Game();
         $game->setUser($this->getUser());
@@ -33,19 +34,19 @@ class GameController extends AbstractController
         $_exclude = [];
         foreach($_slots as $slot)
         {   
-            $_stuff[$slot->getId()] = [];
+            $_stuff[$slot->getName()] = [];
             $_exclude[$slot->getId()] = [];
             
             for ($i = 0 ; $i < 3 ; $i++)
             {
-                $_stuff[$slot->getId()][$i] = $stuffRepository->selectRandomStuffBySlot($slot, $_exclude[$slot->getId()]);
-                $_exclude[] = $_stuff[$slot->getId()][$i]->getId();
+                $_stuff[$slot->getName()][$i] = $stuffRepository->selectRandomStuffBySlot($slot, $_exclude[$slot->getId()]);
+                $_exclude[$slot->getId()][] = $_stuff[$slot->getName()][$i]->getId();
             }  
         }
 
         $session->set('stuff', $_stuff);
 
-        $em = $this->getDoctrine()->getManager();
+        
         $em->persist($game);
         $em->flush();
 
@@ -59,15 +60,15 @@ class GameController extends AbstractController
 
     public function index(Game $game, GameRepository $gameRepository){
              
-        //dd($game);
         $game = $gameRepository->find($game->getId());
+        $stuff = $this->get('session')->get('stuff');
 
-        $session = new Session(); 
-        $session->start(); 
+        $form = $this->createForm(StuffChosenType::class);
 
         return $this->render('game/index.html.twig', [
             'game' => $game,
-            'stuff' => $session->get('stuff')  
+            'form' => $form->createView(),
+            'stuff' => $stuff,  
         ]);
         
     }

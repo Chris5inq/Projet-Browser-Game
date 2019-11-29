@@ -24,13 +24,13 @@ class BossNewType extends AbstractType
                 "data" => 500
             ])
             ->add('armour', IntegerType::class,[
-                "data" => rand(0, 50)
+                "data" => rand(0, 20)
             ])
             ->add('resist_fire', IntegerType::class,[
-                "data" => rand(0, 50)
+                "data" => rand(0, 20)
             ])
             ->add('resist_ice', IntegerType::class,[
-                "data" => rand(0, 50)
+                "data" => rand(0, 20)
             ])
             ->add('power', IntegerType::class,[
                 "data" => rand(0, 50)

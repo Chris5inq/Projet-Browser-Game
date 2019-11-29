@@ -10,10 +10,15 @@
 
 
 <div class="example-wrapper">
-    {{game.boss.armour}}
+  
+    
+    <div>
+        {{ form_start(form) }}
+        {{ form_end(form) }}
+    </div>
+
+    
+    
 </div>
 
-<div class="example-wrapper">
-    {{dump(stuff)}}
-</div>
 {% endblock %}
