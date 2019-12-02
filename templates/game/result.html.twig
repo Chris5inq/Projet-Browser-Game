@@ -112,7 +112,7 @@
     <div><p>Tour {{ key }}:</p>
     {% for perso, action in turn %}
     <p>{% if perso =='Hero'%}Vous{% else %}{{ game.boss.name}}{% endif %} 
-    attaque{% if perso =='Hero'%}z{% endif %} en utilisant {{action.type}} et inflige {{action.damages}} points de dégâts. 
+    attaque{% if perso =='Hero'%}z{% endif %} en utilisant {{action.type}} et inflige{% if perso =='Hero'%}z{% endif %} {{action.damages}} points de dégâts. 
     
     {% if perso =='Hero'%}
         {% if action.HealthBoss <+ 0%}
