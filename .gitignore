@@ -12,3 +12,10 @@
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
+
+###> docker ###
+.idea
+.docker/data/
+.docker/
+docker-compose.yml
+###> docker ###
