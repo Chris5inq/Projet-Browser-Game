@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ app.user.username}}! ✅</h1>
+
+    <a href="https://placeholder.com"><img src="https://via.placeholder.com/800"></a>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porttitor bibendum eros. Donec euismod ultrices efficitur. 
+    Suspendisse dictum mauris vel tincidunt pharetra. Pellentesque mollis pretium est vitae ultrices. In hac habitasse platea dictumst. 
+    Morbi eget velit laoreet nisi malesuada imperdiet in eget urna. Mauris at lorem a augue feugiat porta. In auctor laoreet blandit. 
+    Fusce porta, dui vel facilisis varius, massa diam commodo orci,
+     eget pellentesque velit lorem eget leo. Nam eu rutrum quam, ut pharetra velit. Cras condimentum dignissim diam a consectetur.
+    </p> 
+	<button class="btn btn-danger">Inscription !</button>
+</div>
+{% endblock %}

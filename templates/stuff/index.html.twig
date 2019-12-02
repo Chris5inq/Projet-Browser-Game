@@ -17,7 +17,9 @@
                 <th>M_power</th>
                 <th>M_power_ice</th>
                 <th>M_power_fire</th>
+                <th>Slot</th>
                 <th>actions</th>
+
             </tr>
         </thead>
         <tbody>
@@ -32,6 +34,8 @@
                 <td>{{ stuff.mPower }}</td>
                 <td>{{ stuff.mPowerIce }}</td>
                 <td>{{ stuff.mPowerFire }}</td>
+                <td>{{ stuff.slot.name }}</td>
+
                 <td>
                     <a href="{{ path('stuff_show', {'id': stuff.id}) }}">show</a>
                     <a href="{{ path('stuff_edit', {'id': stuff.id}) }}">edit</a>

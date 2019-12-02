@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Stuff{% endblock %}
+
+{% block body %}
+    <h1>Stuff</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ stuff.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ stuff.name }}</td>
+            </tr>
+            <tr>
+                <th>M_health</th>
+                <td>{{ stuff.mHealth }}</td>
+            </tr>
+            <tr>
+                <th>M_armour</th>
+                <td>{{ stuff.mArmour }}</td>
+            </tr>
+            <tr>
+                <th>M_resist_fire</th>
+                <td>{{ stuff.mResistFire }}</td>
+            </tr>
+            <tr>
+                <th>M_resist_ice</th>
+                <td>{{ stuff.mResistIce }}</td>
+            </tr>
+            <tr>
+                <th>M_power</th>
+                <td>{{ stuff.mPower }}</td>
+            </tr>
+            <tr>
+                <th>M_power_ice</th>
+                <td>{{ stuff.mPowerIce }}</td>
+            </tr>
+            <tr>
+                <th>M_power_fire</th>
+                <td>{{ stuff.mPowerFire }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('stuff_index') }}">back to list</a>
+
+    <a href="{{ path('stuff_edit', {'id': stuff.id}) }}">edit</a>
+
+    {{ include('stuff/_delete_form.html.twig') }}
+{% endblock %}
