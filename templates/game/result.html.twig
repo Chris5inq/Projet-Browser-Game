@@ -8,16 +8,129 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div>Vous avez {% if game.result == 1 %}gagné{% else %} perdu {% endif %} en {{game.turns}} tours !</div>
+<div class="container">
+<div id='hero'>
+    <h4>Hero : {{ game.user.username }}</h4>
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Arme</td>
+            <td>Cape</td>
+            <td>Collier</td>
+            <td></td>   
+        </tr>
+        <tr>
+            <td></td>
+            <td>Base</td>
+            <td>{{stuff_chosen['Arme'].name}}</td>
+            <td>{{stuff_chosen['Cape'].name}}</td>
+            <td>{{stuff_chosen['Collier'].name}}</td>
+            <td>Total</td>   
+        </tr>
+        <tr>
+            <td><b>Force</b></td>
+            <td>{{ game.user.power }}</td>
+            <td>{% if stuff_chosen['Arme'].mpower > 0%}+{% endif %}{{stuff_chosen['Arme'].mpower}}</td>
+            <td>{% if stuff_chosen['Cape'].mpower > 0%}+{% endif %}{{stuff_chosen['Cape'].mpower}}</td>
+            <td>{% if stuff_chosen['Collier'].mpower > 0%}+{% endif %}{{stuff_chosen['Collier'].mpower}}</td>
+            <td><b>{{ game.user.power + stuff_chosen['Arme'].mpower + stuff_chosen['Cape'].mpower + stuff_chosen['Collier'].mpower }}</b></td>
+        </tr>
+        <tr>
+            <td><b>Puissance Feu</b></td>
+            <td>{{ game.user.powerfire }}</td>
+            <td>{% if stuff_chosen['Arme'].mpowerfire > 0%}+{% endif %}{{stuff_chosen['Arme'].mpowerfire}}</td>
+            <td>{% if stuff_chosen['Cape'].mpowerfire > 0%}+{% endif %}{{stuff_chosen['Cape'].mpowerfire}}</td>
+            <td>{% if stuff_chosen['Collier'].mpowerfire > 0%}+{% endif %}{{stuff_chosen['Collier'].mpowerfire}}</td>
+            <td><b>{{ game.user.powerfire + stuff_chosen['Arme'].mpowerfire + stuff_chosen['Cape'].mpowerfire + stuff_chosen['Collier'].mpowerfire }}</b></td>
+        </tr>
+        <tr>
+            <td><b>Puissance Glace</b></td>
+            <td>{{ game.user.powerice }}</td>
+            <td>{% if stuff_chosen['Arme'].mpowerice > 0%}+{% endif %}{{stuff_chosen['Arme'].mpowerice}}</td>
+            <td>{% if stuff_chosen['Cape'].mpowerice > 0%}+{% endif %}{{stuff_chosen['Cape'].mpowerice}}</td>
+            <td>{% if stuff_chosen['Collier'].mpowerice > 0%}+{% endif %}{{stuff_chosen['Collier'].mpowerice}}</td>
+            <td><b>{{ game.user.powerice + stuff_chosen['Arme'].mpowerice + stuff_chosen['Cape'].mpowerice + stuff_chosen['Collier'].mpowerice }}</b></td>
+        </tr>
+        <tr>
+            <td><b>Armure</b></td>
+            <td>{{ game.user.armour }}</td>
+            <td>{% if stuff_chosen['Arme'].marmour > 0%}+{% endif %}{{stuff_chosen['Arme'].marmour}}</td>
+            <td>{% if stuff_chosen['Cape'].marmour > 0%}+{% endif %}{{stuff_chosen['Cape'].marmour}}</td>
+            <td>{% if stuff_chosen['Collier'].marmour > 0%}+{% endif %}{{stuff_chosen['Collier'].marmour}}</td>
+            <td><b>{{ game.user.armour + stuff_chosen['Arme'].marmour + stuff_chosen['Cape'].marmour + stuff_chosen['Collier'].marmour }}</b></td>
+        </tr>
+        <tr>
+            <td><b>Résistance Feu</b></td>
+            <td>{{ game.user.resistfire }}</td>
+            <td>{% if stuff_chosen['Arme'].mresistfire > 0%}+{% endif %}{{stuff_chosen['Arme'].mresistfire}}</td>
+            <td>{% if stuff_chosen['Cape'].mresistfire > 0%}+{% endif %}{{stuff_chosen['Cape'].mresistfire}}</td>
+            <td>{% if stuff_chosen['Collier'].mresistfire > 0%}+{% endif %}{{stuff_chosen['Collier'].mresistfire}}</td>
+            <td><b>{{ game.user.resistfire + stuff_chosen['Arme'].mresistfire + stuff_chosen['Cape'].mresistfire + stuff_chosen['Collier'].mresistfire }}</b></td>
+        </tr>
+        <tr>
+            <td><b>Résistance Glace</b></td>
+            <td>{{ game.user.resistice }}</td>
+            <td>{% if stuff_chosen['Arme'].mresistice > 0%}+{% endif %}{{stuff_chosen['Arme'].mresistice}}</td>
+            <td>{% if stuff_chosen['Cape'].mresistice > 0%}+{% endif %}{{stuff_chosen['Cape'].mresistice}}</td>
+            <td>{% if stuff_chosen['Collier'].mresistice > 0%}+{% endif %}{{stuff_chosen['Collier'].mresistice}}</td>
+            <td><b>{{ game.user.resistice + stuff_chosen['Arme'].mresistice + stuff_chosen['Cape'].mresistice + stuff_chosen['Collier'].mresistice }}</b></td>
+        </tr>
+    </table>
+</div>
 
-<div class="example-wrapper">
+<div id='boss'>
+    <h4>Boss : {{ game.boss.name }}</h4>
+    <table>
+        <tr>
+            <td><b>Force</b></td>
+            <td>{{ game.boss.power }}</td>
+        </tr>
+        <tr>
+            <td><b>Puissance Feu</b></td>
+            <td>{{ game.boss.powerfire }}</td>
+        </tr>
+        <tr>
+            <td><b>Puissance Glace</b></td>
+            <td>{{ game.boss.powerice }}</td>
+        </tr>
+        <tr>
+            <td><b>Armure</b></td>
+            <td>{{ game.boss.armour }}</td>
+        </tr>
+        <tr>
+            <td><b>Résistance Feu</b></td>
+            <td>{{ game.boss.resistfire }}</td>
+        </tr>
+        <tr>
+            <td><b>Résistance Glace</b></td>
+            <td>{{ game.boss.resistice }}</td>
+        </tr>
+    </table>
+</div>
 {% for key, turn in turns %}
     <div><p>Tour {{ key }}:</p>
     {% for perso, action in turn %}
-    <p>{{ perso }} attaque en utilisant {{action.type}} et inflige {{action.damages}} points de dégâts.</p>   
+    <p>{% if perso =='Hero'%}Vous{% else %}{{ game.boss.name}}{% endif %} 
+    attaque{% if perso =='Hero'%}z{% endif %} en utilisant {{action.type}} et inflige{% if perso =='Hero'%}z{% endif %} {{action.damages}} points de dégâts. 
+    
+    {% if perso =='Hero'%}
+        {% if action.HealthBoss <+ 0%}
+            {{ game.boss.name}} est mort !
+        {% else %}
+            {{ game.boss.name}} a {{ action.HealthBoss}} PV restants.
+        {% endif %}
+    {% else %}
+        {% if action.HealthHero <+ 0%}
+            Vous êtes mort !
+        {% else %}
+            Vous avez {{ action.HealthHero}} PV restants.
+        {% endif %}
+    {% endif %}
     {% endfor  %}  
     </div><br> 
-{% endfor  %}   
+{% endfor  %} 
+<h4>Vous avez {% if game.result == 1 %}gagné{% else %}perdu{% endif %} en {{game.turns}} tours !</h4>  
 </div>
 
 {% endblock %}
